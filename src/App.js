@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function App() {
     const CLIENT_ID = "09b47dff3cf542aa8ba606df73c215e0"
-    const REDIRECT_URI = "http://localhost:8081/callback"
+    const REDIRECT_URI = "http://localhost:3000"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
 
@@ -52,7 +52,7 @@ function App() {
     const renderArtists = () => {
         return artists.map(artist => (
             <div key={artist.id}>
-                {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+                {artist.images.length ? <img width={"30%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
                 {artist.name}
             </div>
         ))
