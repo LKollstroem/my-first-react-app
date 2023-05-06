@@ -3,6 +3,7 @@ import './styles.css';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 
+
 function App() {
     const CLIENT_ID = "09b47dff3cf542aa8ba606df73c215e0"
     const REDIRECT_URI = "http://localhost:3000"
@@ -52,9 +53,25 @@ function App() {
     }
     const renderArtists = () => {
         return artists.map(artist => (
-            <div key={artist.id}>
-                {artist.images.length ? <img width={"10%"} src={artist.images[0].url} alt=""/> : <div>No Image found in Spotify records</div>}
-                {artist.name}
+            <div class="container" key={artist.id}>
+                <div class="row">
+                    <div class="col-sm-3" name="Image">
+                        <h3>Image</h3>
+                        {artist.images.length ? <img width={"90%"} src={artist.images[0].url} alt=""/> : <div>No Image found in Spotify records</div>}
+                    </div>    
+                    <div class="col-sm-2" name="Artist">   
+                        <h3>Artist</h3>
+                        {artist.name}
+                    </div> 
+                    <div class="col-sm-4" name="Genre"> 
+                        <h3>Genre</h3>
+                        {artist.genres}
+                    </div> 
+                    <div class="col-sm-3" name="Popularity"> 
+                        <h3>Popularity</h3>
+                        {artist.popularity}
+                    </div>
+                </div>
             </div>
         ))
     }
@@ -72,7 +89,7 @@ function App() {
                 {token ?   
                     <form onSubmit={searchArtists}>
                         <br></br>
-                        <h2>Enter artist name and hit search to see the artist and an image.</h2>
+                        <h2>Enter artist name and hit search to see the artist information and an image.</h2>
                         <input type="text" onChange={e => setSearchKey(e.target.value)}/>
                         <button type={"submit"}>Search</button>
                         <br></br>
