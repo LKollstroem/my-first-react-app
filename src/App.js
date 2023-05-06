@@ -13,6 +13,7 @@ function App() {
     const [searchKey, setSearchKey] = useState("")
     const [artists, setArtists] = useState([])
 
+
     useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
@@ -52,7 +53,7 @@ function App() {
     const renderArtists = () => {
         return artists.map(artist => (
             <div key={artist.id}>
-                {artist.images.length ? <img width={"30%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
+                {artist.images.length ? <img width={"10%"} src={artist.images[0].url} alt=""/> : <div>No Image found in Spotify records</div>}
                 {artist.name}
             </div>
         ))
@@ -61,17 +62,20 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Spotify React</h1>
+                <h1>Search in Spotify API</h1>
                 {!token ?
                     <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
                         to Spotify</a>
                     : <button onClick={logout}>Logout</button>}
                 
 
-                {token ?    
+                {token ?   
                     <form onSubmit={searchArtists}>
+                        <br></br>
+                        <h2>Enter artist name and hit search to see the artist and an image.</h2>
                         <input type="text" onChange={e => setSearchKey(e.target.value)}/>
                         <button type={"submit"}>Search</button>
+                        <br></br>
                     </form>
 
                     : <h2>Please login</h2>
@@ -79,6 +83,7 @@ function App() {
                 }    
 
                 {renderArtists()}
+
 
             </header>
         </div>
