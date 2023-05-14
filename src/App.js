@@ -15,21 +15,23 @@ function App() {
 
 
 //Data for the dropdown
-    const dropdowndata = [
-        {value: 1, name: 'A'},
-        {value: 2, name: 'B'},
-        {value: 3, name: 'C'},
-     ]
+//    const dropdowndata = [
+//        {value: 1, name: 'A'},
+//        {value: 2, name: 'B'},
+//        {value: 3, name: 'C'},
+//     ]
 
 //All searches listed:
     const [token, setToken] = useState("");
     const [searchKey, setSearchKey] = useState("");
     const [artists, setArtists] = useState([]);
-    const [playlist, setPlaylist] = useState([]);
+    const [albums, setAlbums] = useState([]);
+    const [tracks, setTracks] = useState([]);
+
 //    const [tracks, setTracks] = useState({selectedTrack: '', listOfTracksFromAPI: []});
 //    const [trackDetail, setTrackDetail] = useState(null); 
 
-//Save token in localstorage
+//Save token in localstorage, This token works on login and on first search but expires on next searches
     useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
@@ -88,10 +90,85 @@ function App() {
             </div>
         ))
     }
-//Search for Playlist:
- 
 
+//PROMISE ALL TEST to search for all api's
+    const searchAlbums = async (e) => {
+        e.preventDefault()
+        const {data} = await axios.get("https://api.spotify.com/v1/search", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                q: searchKey,
+                type: "album"
+            }
+        })
+        console.log(data);
 
+        setAlbums(data.albums.items);
+        console.log(data.albums.items);
+    }
+    
+    const renderAlbums = () => {    
+            return albums.map(album => (
+                <div className="container" key={album.id}>
+                <div className="row">
+                    <div className="col-sm-4" name="Image">
+                        <h3>Image</h3>
+                            {album.images.length ? <img width={"90%"} src={album.images[0].url} alt=""/> : <div>No Image found in Spotify records</div>}
+                    </div>    
+                    <div className="col-sm-4" name="Album">   
+                            <h3>Album</h3>
+                            {album.name}
+                    </div> 
+                        <div className="col-sm-4" name="Totaltracks"> 
+                            <h3>Tracks</h3>
+                            {album.total_tracks}
+                        </div>
+                    </div>
+                </div>
+            ))
+    } 
+    const searchTracks = async (e) => {
+        e.preventDefault()
+        const {data} = await axios.get("https://api.spotify.com/v1/search", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                q: searchKey,
+                type: "track"
+            }
+        })
+        console.log(data);
+
+        setTracks(data.tracks.items);
+        console.log(data.tracks.items);
+    }       
+    const renderTracks = () => {
+            return tracks.map(track => (
+                <div className="container" key={track.id}>
+                <div className="row">
+                    <div className="col-sm-4" name="Artist">   
+                            <h3>Song</h3>
+                            {track.artist.name}
+                    </div> 
+                    <div className="col-sm-4" name="Tracks">   
+                            <h3>Song</h3>
+                            {track.name}
+                    </div> 
+                        <div className="col-sm-4" name="Preview"> 
+                            <h3>Preview</h3>
+                            {track.preview_url}
+                        </div>
+                    </div>
+                    <div className="col-sm-4" name="Album2">   
+                            <h3>Album the song is on</h3>
+                            {track.album}
+                    </div> 
+                </div>
+            ))
+    }
 //Return all information with header and if token is not ok, then redirect
     return (
         <div className="App">
@@ -117,16 +194,16 @@ function App() {
                         </div>    
                         <div onSubmit={() => {}} className="container">
                             <h3>Which would you like to get more information on?</h3>
-                                        <Dropdown options={artists}/>
-                                        <button type= 'submit'>
-                                        More info
-                                        </button>
+                            <Dropdown options={artists} onchange={e => setSearchKey(e.target.value)}/>
+                            <div>
+                                <button onClick={searchAlbums} type= 'submit'>Show albums</button>
+                                <Dropdown options={albums} onchange={e => setSearchKey(e.target.value)} id="choises"/>
+                                <div>
+                                    <button onClick={searchTracks} type= 'submit'>Show songs on album</button>
+                                    <Dropdown options={tracks} onchange={e => setSearchKey(e.target.value)}/>
+                                </div>
+                            </div>
                         </div>  
-
-
-
-
-
                     </form>  
 
                     : <h2>Please login</h2>
@@ -138,6 +215,8 @@ function App() {
                 }    
 
                 {renderArtists()}
+                {renderAlbums()}
+                {renderTracks()}
 
        
             </header>
