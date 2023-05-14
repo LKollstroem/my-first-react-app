@@ -10,6 +10,8 @@ So I had to move these folders away so that they are not disturbing the front en
 A lot of script has been done and even more has been deleted.  Alwasy very diffivult to get things to work.
 I also send a video of the functions that I got to work.
 
+Her is what I was able to do:
+I made som Css with bootstrap, mostly on the layout.
 Site is made on React
 I have a login that works
 Logout works
@@ -23,3 +25,4 @@ Then a next dropdown gets the information and you can choose to search for songs
 This song search I could not get the api to work.
 
 This is published on Render.
+https://leenas-react-app.onrender.com/
