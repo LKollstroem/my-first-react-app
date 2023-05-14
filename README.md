@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+My comments to this third project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+First of all I got some problems when using the local host that is linket in the Spotify app in Spotify pages that had to be made to use that API.
+This is because it can not use the same as the Second project - the backend used so I fad to try out a few wasy of doing it before I ended up adding one to Spotify app.
+I had localhost:3000 on this project and 8081 on the number 2 project.
 
-## Available Scripts
+I have been working a lot back and forth to get the api's to work, I could not get anything to work through connecting to the backend with setupProxy.js helping to connect them.
+So I had to move these folders away so that they are not disturbing the front end.
 
-In the project directory, you can run:
+A lot of script has been done and even more has been deleted.  Alwasy very diffivult to get things to work.
+I also send a video of the functions that I got to work.
 
-### `npm start`
+Site is made on React
+I have a login that works
+Logout works
+The first data you see is only text and boxes but when you make the aearch you get more.
+The search function works
+First you search for an artist and get image, artist name, genre, popularity.
+This info then also pulls into a dropdown box.
+Choose an alternative in the box and search for the albums of the one you want.
+Then a next dropdown gets the information and you can choose to search for songs in the album.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This song search I could not get the api to work.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is published on Render.
